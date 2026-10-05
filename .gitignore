@@ -1,0 +1,17 @@
+# Generated per project by activate.sh
+diabetes_agent/.env
+# Copied from ../requirements.txt by scripts/deploy.sh
+diabetes_agent/requirements.txt
+# Live-built evalsets and eval history (catch_up moves old evalsets here)
+.old_evalsets/
+diabetes_agent/.adk/
+.adk/
+# Python
+.venv/
+__pycache__/
+*.pyc
+# Docs build
+node_modules/
+docs/~$*
+.DS_Store
+_archive/

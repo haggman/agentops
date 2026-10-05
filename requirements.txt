@@ -1,0 +1,11 @@
+# Runtime dependencies for the diabetes agent. scripts/deploy.sh copies this file into
+# diabetes_agent/ before every deploy, because `adk deploy agent_engine` installs the
+# requirements.txt it finds INSIDE the agent folder (the repo-root file is never read).
+#
+# google-adk[gcp] is required (not plain google-adk): the BigQuery toolset needs
+# google-cloud-bigquery AND google-cloud-dataplex, and the base package installs neither.
+google-adk[gcp] (>=2.8.0,<3.0.0)
+google-cloud-aiplatform[agent_engines] (>=1.148.1,<2.0.0)
+google-genai (>=2.19,<3.0.0)
+google-cloud-modelarmor (>=0.7,<1.0)
+pydantic (>=2.12,<3.0.0)

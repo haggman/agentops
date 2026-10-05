@@ -1,0 +1,134 @@
+{
+  "eval_set_id": "agentops_baseline",
+  "name": "agentops_baseline",
+  "description": "Fallback evalset for the AgentOps demo (M4/M6): one question per tool path. Tool names are checked, arguments are not (see test_config.json).",
+  "eval_cases": [
+    {
+      "eval_id": "risk-factors",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What are the main risk factors for type 2 diabetes?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The main risk factors for type 2 diabetes include excess weight (especially around the waist), physical inactivity, age over 35-45, family history, prediabetes, high blood pressure, and a history of gestational diabetes. Sources: CDC, American Diabetes Association.\n\n⚠️ This is an educational tool only. It is NOT medical advice. Please consult a healthcare provider for proper screening and medical guidance."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "search_agent"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1791235380.7039502
+        }
+      ],
+      "session_input": {
+        "app_name": "diabetes_agent",
+        "user_id": "patrick",
+        "state": {}
+      },
+      "creation_timestamp": 1791235380.7039702,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "dataset-prevalence",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What percentage of people in your diabetes study dataset actually had diabetes?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "In the study dataset, 8,500 of the 100,000 patients had diabetes: 8.5%.\n\n⚠️ This is an educational tool only. It is NOT medical advice. Please consult a healthcare provider for proper screening and medical guidance."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "execute_sql"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1791235380.70404
+        }
+      ],
+      "session_input": {
+        "app_name": "diabetes_agent",
+        "user_id": "patrick",
+        "state": {}
+      },
+      "creation_timestamp": 1791235380.7040462,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "risk-assessment",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "I'm a 55-year-old man, a former smoker, BMI 28.5, HbA1c 6.8, blood glucose 145. I have high blood pressure and no heart disease. What's my diabetes risk?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Based on your complete profile, the model puts you in the High Risk category. HbA1c and blood glucose are the strongest drivers; weight, activity and blood pressure are the factors you can change.\n\n⚠️ This is an educational tool only. It is NOT medical advice. Please consult a healthcare provider for proper screening and medical guidance."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "execute_sql"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1791235380.7040899
+        }
+      ],
+      "session_input": {
+        "app_name": "diabetes_agent",
+        "user_id": "patrick",
+        "state": {}
+      },
+      "creation_timestamp": 1791235380.7040944,
+      "final_session_state": {}
+    }
+  ],
+  "creation_timestamp": 1791235380.7040975
+}
