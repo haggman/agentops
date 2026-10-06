@@ -27,7 +27,11 @@ export GCS_URI="${GCS_URI:-gs://class-demo/diabetes_prediction_dataset.csv}"
 # Model and Agent Runtime
 export GEMINI_LOCATION="${GEMINI_LOCATION:-global}"
 export AGENT_REGION="${AGENT_REGION:-us-central1}"
-export AGENT_MODEL="${AGENT_MODEL:-gemini-flash-latest}"
+export AGENT_MODEL="${AGENT_MODEL:-gemini-3.8-flash}"          # pinned IDs: Agent Platform 404s on the -latest aliases
+export LITE_MODEL="${LITE_MODEL:-gemini-3.5-flash-lite}"       # the cheaper model M6 compares against
+# A shell that sourced an older activate.sh still has the alias exported; replace it.
+case "$AGENT_MODEL" in *-latest) echo "  ! AGENT_MODEL=$AGENT_MODEL is an alias Agent Platform 404s on; using gemini-3.8-flash"; export AGENT_MODEL=gemini-3.8-flash;; esac
+case "$LITE_MODEL" in *-latest) export LITE_MODEL=gemini-3.5-flash-lite;; esac
 export AGENT_DISPLAY_NAME="${AGENT_DISPLAY_NAME:-Diabetes Risk Agent (AgentOps demo)}"
 
 # Model Armor (M5). The template lives in the "us" multi-region.

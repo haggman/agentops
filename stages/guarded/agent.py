@@ -22,9 +22,10 @@ from google.adk.tools.agent_tool import AgentTool
 # uncomment this import AND the before_model_callback line in root_agent below.
 from .guardrails import model_armor_guard
 
-# Model for both agents. "gemini-flash-latest" tracks the current Flash
-# generation; set AGENT_MODEL to pin an explicit version for a class.
-MODEL = os.environ.get("AGENT_MODEL", "gemini-flash-latest")
+# Model for both agents, pinned to a real model ID: "gemini-flash-latest" is a Gemini
+# Developer API alias and Agent Platform's global endpoint returns 404 for it.
+# Set AGENT_MODEL (activate.sh does) to change it without editing code.
+MODEL = os.environ.get("AGENT_MODEL", "gemini-3.8-flash")
 
 # 1) Application Default Credentials (ADC) — run: gcloud auth application-default login
 #    Locally this is you. On Agent Runtime it is the Reasoning Engine service

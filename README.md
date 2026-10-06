@@ -26,7 +26,7 @@ Two Cloud Shell tabs:
 
 | Tab | Runs |
 |---|---|
-| TAB 1 | `cd ~/agentops && adk web --reload_agents --allow_origins "*"` (open the 127.0.0.1:8000 link) |
+| TAB 1 | `source ~/agentops/activate.sh && cd ~/agentops && adk web --reload_agents --allow_origins "*"` (open the 127.0.0.1:8000 link) |
 | TAB 2 | `source ~/agentops/activate.sh`, then every other command |
 
 ---
@@ -106,5 +106,9 @@ A Qwiklabs project is deleted when its timer ends, which cleans up everything.
 On a machine with Node: `npm install` once, then `bash src/build.sh`. Edit `src/content.js`, never the generated documents.
 
 ## Lessons from real runs
+
+- `gemini-flash-latest` returns 404 on Agent Platform's global endpoint (it's a Gemini Developer API alias). The pack pins `gemini-3.8-flash` (agent and eval judge) and `gemini-3.5-flash-lite` (M6). 3.6 and 3.7 Flash are being removed.
+
+- Both Cloud Shell tabs need `source ~/agentops/activate.sh` first. Without it, `adk` is Cloud Shell's preinstalled ADK, which can't import the agent (no BigQuery/Model Armor packages, older ADK).
 
 - (first delivery: October 6, 2026)

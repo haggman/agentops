@@ -50,4 +50,4 @@ fi
 
 echo
 echo "✓ Ready for M${M}. In any new Cloud Shell tab: source ~/agentops/activate.sh"
-echo "  Local dev UI:  cd ~/agentops && adk web --reload_agents --allow_origins \"*\"   (already running? reload the browser page)"
+echo "  Local dev UI:  source ~/agentops/activate.sh && cd ~/agentops && adk web --reload_agents --allow_origins \"*\"   (already running? reload the browser page)"

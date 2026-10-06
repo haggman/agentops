@@ -34,7 +34,7 @@ One command puts everything in the start state for that module, whatever happene
 ## Before the day
 
 - [ ] Cloud Shell, class project:  git -C ~/agentops pull && bash ~/agentops/catch_up.sh 1   (every line ✓ or +)
-- [ ] Cloud Shell TAB 1:  cd ~/agentops && adk web --reload_agents --allow_origins "*"   ▸ open the 127.0.0.1:8000 link ▸ diabetes_agent ▸ Token Streaming OFF
+- [ ] Cloud Shell TAB 1:  source ~/agentops/activate.sh && cd ~/agentops && adk web --reload_agents --allow_origins "*"   ▸ open the 127.0.0.1:8000 link ▸ diabetes_agent ▸ Token Streaming OFF
 - [ ] Cloud Shell TAB 2:  source ~/agentops/activate.sh   (every other command runs here)
 - [ ] Console tabs: Agent Platform ▸ Agent Runtime (our instance) · Trace explorer · Security ▸ Model Armor
 - [ ] Deployed agent exists from last night's dry run (catch_up 3 reuses it; a fresh deploy is 5–10 min)
@@ -57,7 +57,7 @@ Stop on 20 (AgentOps on Google Cloud) · ~8 min · Stage 1
 bash ~/agentops/catch_up.sh 1
 ```
 
-- TAB 1: cd ~/agentops && adk web --reload_agents --allow_origins "*"
+- TAB 1: source ~/agentops/activate.sh && cd ~/agentops && adk web --reload_agents --allow_origins "*"
 - Browser: 127.0.0.1:8000 ▸ agent dropdown ▸ diabetes_agent
 
 **FILES**
@@ -142,7 +142,7 @@ Kick off the deploy early; it finishes while you teach slides 13–31.
 cat ~/agentops/diabetes_agent/.env
 ```
 
-→ *GOOGLE_CLOUD_LOCATION=global (model) · PROJECT_ID · AGENT_MODEL=gemini-flash-latest*
+→ *GOOGLE_CLOUD_LOCATION=global (model) · PROJECT_ID · AGENT_MODEL=gemini-3.8-flash*
 
 **SAY**
 
@@ -546,7 +546,7 @@ Measure ▸ Analyze ▸ Optimize ▸ Validate (slide 16), with our agent.
 cd ~/agentops && python 06-finops/cost_per_turn.py
 ```
 
-→ *Two tables (flash, flash-lite): 3–6 model calls per turn, the search questions include sub-agent calls, $ per turn ▸ last line: flash-lite costs ~N% of flash (2–3 min)*
+→ *Two tables (3.8 Flash, 3.5 Flash-Lite): 3–6 model calls per turn, the search questions include sub-agent calls, $ per turn ▸ last line: 3.5-flash-lite costs ~N% of 3.8-flash (2–3 min)*
 
 **SAY**
 
@@ -555,7 +555,7 @@ That's Measure and Analyze. Optimize says: use the cheap one. Module 4 says: pro
 **CLOUD SHELL · TAB 2**
 
 ```text
-cd ~/agentops && AGENT_MODEL=gemini-flash-lite-latest adk eval diabetes_agent diabetes_agent/agentops_baseline.evalset.json \
+cd ~/agentops && AGENT_MODEL=gemini-3.5-flash-lite adk eval diabetes_agent diabetes_agent/agentops_baseline.evalset.json \
   --config_file_path 04-evaluate/test_config.json
 ```
 

@@ -5,11 +5,11 @@ Runs the three questions from the M4 evalset against the agent once per model, c
 model call (the root agent AND the search sub-agent) with an ADK plugin, and prices the tokens.
 
     cd ~/agentops && python 06-finops/cost_per_turn.py
-    python 06-finops/cost_per_turn.py --models gemini-flash-latest gemini-flash-lite-latest
+    python 06-finops/cost_per_turn.py --models gemini-3.8-flash gemini-3.5-flash-lite
     python 06-finops/cost_per_turn.py --evalset diabetes_agent/my_live_evalset.evalset.json
 
 Prices come from 06-finops/prices.json (USD per 1M tokens). Check them against the pricing page
-before class; the "-latest" aliases move when Google ships a new model.
+before class.
 Thinking tokens are billed as output. Cached input tokens are billed at the cached rate.
 """
 
@@ -114,7 +114,7 @@ def show(model, rows, prices):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", nargs="+", default=["gemini-flash-latest", "gemini-flash-lite-latest"])
+    ap.add_argument("--models", nargs="+", default=[os.environ.get("AGENT_MODEL", "gemini-3.8-flash"), os.environ.get("LITE_MODEL", "gemini-3.5-flash-lite")])
     ap.add_argument("--evalset", default=str(ROOT / "04-evaluate" / "agentops_baseline.evalset.json"))
     args = ap.parse_args()
 
