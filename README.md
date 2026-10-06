@@ -107,6 +107,8 @@ On a machine with Node: `npm install` once, then `bash src/build.sh`. Edit `src/
 
 ## Lessons from real runs
 
+- `adk eval` and the adk web Eval tab need `google-adk[eval]`; plain `[gcp]` stops with "Eval module is not installed". requirements.txt now asks for `[gcp,eval]`, and setup.sh reinstalls into the venv when the eval packages are missing.
+
 - `gemini-flash-latest` returns 404 on Agent Platform's global endpoint (it's a Gemini Developer API alias). The pack pins `gemini-3.8-flash` (agent and eval judge) and `gemini-3.5-flash-lite` (M6). 3.6 and 3.7 Flash are being removed.
 
 - Both Cloud Shell tabs need `source ~/agentops/activate.sh` first. Without it, `adk` is Cloud Shell's preinstalled ADK, which can't import the agent (no BigQuery/Model Armor packages, older ADK).

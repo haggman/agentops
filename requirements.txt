@@ -4,7 +4,8 @@
 #
 # google-adk[gcp] is required (not plain google-adk): the BigQuery toolset needs
 # google-cloud-bigquery AND google-cloud-dataplex, and the base package installs neither.
-google-adk[gcp] (>=2.8.0,<3.0.0)
+# [eval] adds what adk eval and the adk web Eval tab need; without it: "Eval module is not installed".
+google-adk[gcp,eval] (>=2.8.0,<3.0.0)
 google-cloud-aiplatform[agent_engines] (>=1.148.1,<2.0.0)
 google-genai (>=2.19,<3.0.0)
 google-cloud-modelarmor (>=0.7,<1.0)

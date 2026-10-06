@@ -19,11 +19,11 @@ if [ ${#MISSING[@]} -eq 0 ]; then echo "   ✓ all ${#APIS[@]} APIs enabled"
 else gcloud services enable "${MISSING[@]}" && echo "   + enabled: ${MISSING[*]}"; fi
 
 echo "== 2/5 Python environment (.venv, ADK 2.x)"
-if [ -x "$PACK/.venv/bin/adk" ] && "$PACK/.venv/bin/python" -c 'import google.adk, google.cloud.modelarmor_v1' 2>/dev/null; then
+if [ -x "$PACK/.venv/bin/adk" ] && "$PACK/.venv/bin/python" -c 'import google.adk, google.cloud.modelarmor_v1, pandas, rouge_score, tabulate' 2>/dev/null; then
   echo "   ✓ .venv with $("$PACK/.venv/bin/adk" --version 2>/dev/null)"
 else
   echo "   … creating .venv and installing requirements (2-3 minutes)"
-  python3 -m venv "$PACK/.venv"
+  [ -d "$PACK/.venv" ] || python3 -m venv "$PACK/.venv"
   "$PACK/.venv/bin/pip" install --quiet --upgrade pip wheel
   "$PACK/.venv/bin/pip" install --quiet -r "$PACK/requirements.txt"
   echo "   + .venv with $("$PACK/.venv/bin/adk" --version)"
