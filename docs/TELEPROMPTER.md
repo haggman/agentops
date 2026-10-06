@@ -322,9 +322,17 @@ I'm a 55-year-old man, a former smoker, BMI 28.5, HbA1c 6.8, blood glucose 145. 
 
 Eval tab ▸ agentops_live ▸ open the percentage case
 
-→ *The question, tool_uses: execute_sql (with its SQL), the final response.*
+→ *Everything it did: maybe get_table_info, then execute_sql with its exact SQL, then the answer.*
 
-> **If it goes wrong:** No Eval tab or the add fails: skip to the next block and use the fallback evalset shipped in 04-evaluate/.
+**CLOUD SHELL · TAB 2**
+
+```text
+cd ~/agentops && python 04-evaluate/curate_evalset.py diabetes_agent/agentops_live.evalset.json
+```
+
+→ *Per case: recorded path → expected: search_agent / execute_sql / execute_sql (original kept as agentops_live.recorded.json)*
+
+> **If it goes wrong:** Don't press Run Evaluation in the Eval tab: its defaults (exact tool args + 0.8 text match) fail on any re-run. No Eval tab? Use the fallback evalset in the next block.
 
 ---
 
@@ -361,7 +369,7 @@ cd ~/agentops && adk eval diabetes_agent diabetes_agent/agentops_live.evalset.js
   --config_file_path 04-evaluate/test_config.json --print_detailed_results
 ```
 
-→ *3 passed, 0 failed (≈1–2 min). SAY: now a teammate saves us money.*
+→ *3 passed, 0 failed (≈2–3 min): trajectory 1.0 and the disclaimer rubric on each case. SAY: now a teammate saves us money.*
 
 **CLOUD SHELL · TAB 2**
 
