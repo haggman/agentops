@@ -173,7 +173,7 @@ const blocks = [
   sources: [["adk web running in TAB 1", true], ["Evalset in agent folder", false]],
   resetCmd: CU(4),
   reset: ["Browser: reload the adk web page ▸ diabetes_agent ▸ + New Session"],
-  files: [["diabetes_agent/agentops_live.evalset.json", "what this block creates"]],
+  files: [["diabetes_agent/agentops_live.evalset.json", "what this block creates"], ["04-evaluate/curate_evalset.py", "keeps the key tool per turn"]],
   intro: "Each answer you'd sign off on becomes a test case. Three sessions, one evalset.",
   steps: [
     { tag: "TYPE", text: Q.factors, expect: "Search answer ▸ then Eval tab ▸ Create Evaluation Set ▸ name: agentops_live ▸ Add current session" },

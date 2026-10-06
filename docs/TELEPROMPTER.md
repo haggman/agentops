@@ -291,6 +291,7 @@ bash ~/agentops/catch_up.sh 4
 **FILES**
 
 - `diabetes_agent/agentops_live.evalset.json` — what this block creates
+- `04-evaluate/curate_evalset.py` — keeps the key tool per turn
 
 Each answer you'd sign off on becomes a test case. Three sessions, one evalset.
 
